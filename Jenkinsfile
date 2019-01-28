@@ -6,13 +6,13 @@ pipeline {
             steps {
                 echo 'Building..'
 		sh 'pwd'
-		sh 'ls -l'
-		sh 'go version'
+		sh 'docker build -t hello-world:jenkins-${BUILD_NUMBER} .'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
+		sh 'docker images | grep hello-world'
             }
         }
         stage('Deploy') {
