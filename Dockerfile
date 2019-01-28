@@ -1,4 +1,4 @@
-FROM mikarinneoracle/ubuntu:trusty
+FROM node:8.10
 
 # Create app directory; same as Wercker default
 RUN mkdir -p /pipeline/source
