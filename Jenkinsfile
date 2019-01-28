@@ -15,9 +15,11 @@ pipeline {
 		sh 'docker images | grep hello-world'
             }
         }
-        stage('Deploy') {
+        stage('Push') {
             steps {
-                echo 'Deploying....'
+                echo 'Pushing..'
+                sh 'docker tag hello-world:jenkins-${BUILD_NUMBER} iad.ocir.io/davin2019/travel-agency-front/hello-world:${BUILD_NUMBER}'
+                sh 'docker push iad.ocir.io/davin2019/travel-agency-front/hello-world:${BUILD_NUMBER}'
             }
         }
     }
